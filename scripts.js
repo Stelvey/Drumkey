@@ -2,7 +2,7 @@ function triggerKey(code, state) {
     for (key of keys.children) {
         if (`Key${key.firstElementChild.textContent}` === code) {
             if (state) {
-                new Audio(`media/${key.lastElementChild.textContent}.wav`).play();
+                new Audio(`media/${key.lastElementChild.textContent.toLowerCase()}.wav`).play();
                 key.classList.add('played');
             } else {
                 key.classList.remove('played');
