@@ -62,6 +62,7 @@ a {
 }
 
 .key {
+    transition: all 0.05s;
     display: flex;
     flex-direction: column;
     justify-content: center;
