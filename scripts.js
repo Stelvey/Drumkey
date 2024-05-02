@@ -1,4 +1,13 @@
-clap = new Audio('media/ride.wav');
+clap = new Audio('media/clap.wav');
+hihat = new Audio('media/hihat.wav');
+kick = new Audio('media/kick.wav');
+percussion = new Audio('media/percussion.wav');
+ride = new Audio('media/ride.wav');
+rimshot = new Audio('media/rimshot.wav');
+shaker = new Audio('media/shaker.wav');
+snap = new Audio('media/snap.wav');
+snare = new Audio('media/snare.wav');
+
 
 function triggerKey(code, state) {
     for (key of keys.children) {
