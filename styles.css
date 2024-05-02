@@ -55,6 +55,8 @@ a {
 
 .keys {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 25px;
     list-style-type: none;
     padding: 0;
@@ -88,4 +90,16 @@ a {
     transform: scale(1.1);
     border-color: #DACC3E;
     box-shadow: 0px 0px 75px 1px #BC2C1A;
+}
+
+@media only screen and (max-device-width: 1190px) {
+    .keys {
+        gap: 15px;
+    }
+}
+
+@media only screen and (max-device-width: 1190px) and (orientation: landscape) {
+    header .primary {
+        display: none;
+    }
 }
