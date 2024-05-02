@@ -1,3 +1,5 @@
+clap = new Audio('media/ride.wav');
+
 function triggerKey(code, state) {
     for (key of keys.children) {
         if (`Key${key.firstElementChild.textContent}` === code) {
