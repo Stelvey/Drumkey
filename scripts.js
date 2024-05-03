@@ -8,27 +8,37 @@ shaker = new Audio('media/shaker.wav');
 snap = new Audio('media/snap.wav');
 snare = new Audio('media/snare.wav');
 
-
-function triggerKey(code, state) {
-    for (key of keys.children) {
-        if (`Key${key.firstElementChild.textContent}` === code) {
-            if (state) {
-                new Audio(`media/${key.lastElementChild.textContent.toLowerCase()}.wav`).play();
-                key.classList.add('played');
-            } else {
-                key.classList.remove('played');
-            }
-        }
+function triggerKey(key, state) {
+    if (state) {
+        new Audio(`media/${key.lastElementChild.textContent.toLowerCase()}.wav`).play();
+        key.classList.add('played');
+    } else {
+        key.classList.remove('played');
     }
 }
 
-keys = document.querySelector('.keys');
-
 document.addEventListener('keydown', e => {
     if (e.repeat) return;
-    triggerKey(e.code, 1);
+    triggerKey(document.querySelector(`[data-key="${e.code}"]`), 1);
 });
 
 document.addEventListener('keyup', e => {
-    triggerKey(e.code, 0);
+    triggerKey(document.querySelector(`[data-key="${e.code}"]`), 0);
 });
+
+keys = document.querySelector('.keys').children;
+
+for (key of keys) {
+    key.addEventListener('mousedown', e => {
+        triggerKey(e.currentTarget, 1);
+        e.preventDefault();
+    });
+    key.addEventListener('mouseup', e => {
+        triggerKey(e.currentTarget, 0);
+        e.preventDefault();
+    })
+    key.addEventListener('mouseleave', e => {
+        triggerKey(e.currentTarget, 0);
+        e.preventDefault();
+    })
+}
