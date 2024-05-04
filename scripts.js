@@ -1,15 +1,3 @@
-// Attempt at preloading audio so that there's no "first delay"
-clap = new Audio('media/drumkey/clap.wav');
-hihat = new Audio('media/drumkey/hihat.wav');
-kick = new Audio('media/drumkey/kick.wav');
-percussion = new Audio('media/drumkey/percussion.wav');
-ride = new Audio('media/drumkey/ride.wav');
-rimshot = new Audio('media/drumkey/rimshot.wav');
-shaker = new Audio('media/drumkey/shaker.wav');
-snap = new Audio('media/drumkey/snap.wav');
-snare = new Audio('media/drumkey/snare.wav');
-can = new Audio('media/drunkey/can.wav');
-
 // The very thing that makes keys go brr
 let triggerKey = (key, state) => {
     // The line below prevents errors from pushing other keys
@@ -62,17 +50,20 @@ for (key of keys) {
 }
 
 // Dumb easter egg
+const soundpacks = new Map([
+    ['Drumkey', ['CLAP', 'HIHAT', 'KICK', 'PERCUSSION', 'RIDE', 'RIMSHOT', 'SHAKER', 'SNAP', 'SNARE']],
+    ['Drunkey', ['CAN', 'CAN', 'CAN', 'CAN', 'CAN', 'CAN', 'CAN', 'CAN', 'CAN']]
+]);
 function checkTitle(title) {
     switch (title) {
         case 'Drumkey':
-            const soundpack = ['CLAP', 'HIHAT', 'KICK', 'PERCUSSION', 'RIDE', 'RIMSHOT', 'SHAKER', 'SNAP', 'SNARE'];
             for (let i = 0; i < keys.length; i++) {
-                keys[i].lastElementChild.textContent = soundpack[i];
+                keys[i].lastElementChild.textContent = soundpacks.get('Drumkey')[i];
             }
             return true;
         case 'Drunkey':
             for (let i = 0; i < keys.length; i++) {
-                keys[i].lastElementChild.textContent = 'CAN';
+                keys[i].lastElementChild.textContent = soundpacks.get('Drunkey')[i];
             }
             return true;
     }
@@ -83,3 +74,10 @@ title.addEventListener('input', e => {
         e.target.blur();
     }
 })
+
+// Attempt at preloading audio so that there's no "first delay"
+for (const [key, values] of soundpacks.entries()) {
+    for (value of values) {
+        audio = new Audio(`media/${key.toLowerCase()}/${value.toLowerCase()}.wav`);
+    }
+}
