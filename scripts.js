@@ -12,6 +12,8 @@ can = new Audio('media/drunkey/can.wav');
 
 // The very thing that makes keys go brr
 let triggerKey = (key, state) => {
+    // The line below prevents errors from pushing other keys
+    if (!key) return;
     if (state) {
         new Audio(`media/${title.textContent.toLowerCase()}/${key.lastElementChild.textContent.toLowerCase()}.wav`).play();
         key.classList.add('played');
@@ -63,14 +65,14 @@ for (key of keys) {
 function checkTitle(title) {
     switch (title) {
         case 'Drumkey':
-            const soundpack = ['clap', 'hihat', 'kick', 'percussion', 'ride', 'rimshot', 'shaker', 'snap', 'snare'];
+            const soundpack = ['CLAP', 'HIHAT', 'KICK', 'PERCUSSION', 'RIDE', 'RIMSHOT', 'SHAKER', 'SNAP', 'SNARE'];
             for (let i = 0; i < keys.length; i++) {
                 keys[i].lastElementChild.textContent = soundpack[i];
             }
             return true;
         case 'Drunkey':
             for (let i = 0; i < keys.length; i++) {
-                keys[i].lastElementChild.textContent = 'can';
+                keys[i].lastElementChild.textContent = 'CAN';
             }
             return true;
     }
