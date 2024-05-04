@@ -1,4 +1,4 @@
-[![License GPL-3.0](https://img.shields.io/github/license/Stelvey/LaziestRecipes)](LICENSE)
+[![License GPL-3.0](https://img.shields.io/github/license/Stelvey/Drumkey)](LICENSE)
 
 # Drumkey
 
