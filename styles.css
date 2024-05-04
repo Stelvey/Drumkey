@@ -2,6 +2,8 @@
 
 * {
     box-sizing: border-box;
+    outline: none;
+    user-select: none;
 }
 
 html, body {
@@ -74,6 +76,7 @@ a {
     font-family: "Bebas Neue", sans-serif;
     text-align: center;
     border: 5px solid #BC2C1A;
+    cursor: pointer;
 }
 
 .key .primary {
